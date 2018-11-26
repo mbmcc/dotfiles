@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/data/data/com.termux/files/home/git/CS131_Wk3/db_Mileage-Log'
+let g:netrw_dirhist_2='/data/data/com.termux/files/home/.vim/bundle/Vundle.vim'
+let g:netrw_dirhist_3='/data/data/com.termux/files/home'
+let g:netrw_dirhist_4='/data/data/com.termux/files/home/.vim'
