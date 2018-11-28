@@ -1,0 +1,24 @@
+"Grab the global vimrc"
+source $VIM\_vimrc
+
+"Personal settings"
+set relativenumber "sets the line number to relative position
+set number "sets the line numbers shown
+colorscheme gruvbox "https://github.com/morhetz/gruvbox
+set background=dark "sets the background as used by gruvbox dark | light
+set laststatus=2 "show the status bar the whole time
+set softtabstop=3 "use with shiftwidt to set tab char value without changing tab setting
+set shiftwidth=3
+set noexpandtab "dont use <tab> use spaces instead
+set smarttab "uses sw st and ts but remembers for <BS>
+set autoindent " automagically remember indent in new lines
+set smartindent " uses automagic indenting and understands some C code conventions
+
+"----- GUI settings -----"
+set guifont=Lucida_Console:h11:cANSI:qDRAFT
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
+cd $HOME
