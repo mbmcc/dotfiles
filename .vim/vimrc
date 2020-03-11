@@ -1,51 +1,86 @@
 "Grab the global vimrc"
-source $VIM\_vimrc
-
+source /etc/vimrc
+"==============================="
 "----- Personal settings -----"
-set runtimepath+="C:\Users\matthew.b.mccourry\Working_Directory_Backup\c27stokypt1\191\css\working directories\contract_serversupport\_ wd - matthew\Tools\gvim81\vim\vim81","\\c27stokypt1\191\CSS\Working Directories\Contract_ServerSupport\_ WD - Matthew\Tools\gvim81\vim\vim81","H:/vimfiles/"
 
-set relativenumber "sets the line number to relative position
+"
+"----- Misc Temp files -----"
+set backupdir=$HOME/.vim/tmp//
+set directory=$HOME/.vim/tmp//
+set undodir=$HOME/.vim/tmp//
+
+set hidden "Throw modified but unsaved buffers in the 'background'
+" make sure to save your work before exiting
+
+set viminfo='10,<50,s10,h,rA:,rB:
+
+set t_Co=256 
+
+colorscheme PaperColor
+let g:PaperColor_Theme_Options = {'theme' : {'default': {	'transparent_background': 1}}}
+"colorscheme solarized "https://github.com/altercation/vim-colors-solarized
+"colorscheme gruvbox "https://github.com/morhetz/gruvbox
+"colorscheme  base16-irblack
+
+set background=dark "sets the background as dark | light
+set linebreak
 set number "sets the line numbers shown
-colorscheme  base16-irblack
-"colorscheme solarized "https:\\github.com\altercation\vim-colors-solarized
-"colorscheme gruvbox "https:\\github.com\morhetz\gruvbox
-"colorscheme papercolor
-set background=dark "sets the background as used by gruvbox dark | light
+set relativenumber "sets the line number to relative position
 set laststatus=2 "show the status bar the whole time
-set autoindent " automagically remember indent in new lines
+
+set spellsuggest+=10
+set spellfile=$HOME:/.vim/spell/tech.en-us.add
 " notes about tabs and indenting
 " https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
-"
+" Setting some text / page formatting
+set autoindent " automagically remember indent in new lines
+set smartindent " uses automagic indenting and understands some C code conventions
 set tabstop=8 "hard tab stops at certain characters
 set smarttab "uses sw st and ts but remembers for <BS>
 set softtabstop=4 "use with shiftwidt to set tab char value without changing tab setting
 set shiftwidth=4 "The number of characters that indent when you choose > indentation
-set noexpandtab "dont use spaces use <tab> instead
-set smartindent " uses automagic indenting and understands some C code conventions
+set expandtab "use spaces use instead of <tab> 
+    
 " setting the special character values
-set listchars=tab:¬¸,space:•,nbsp:¤,trail:°,eol:¶,precedes:«,extends:»
+set listchars=tab:¬¸,space:·,nbsp:¤,trail:°,eol:¶,precedes:«,extends:»
+
 " setting the vim shell to powershell
-set shell=powershell
-set shellcmdflag=-c
-set shellquote="
-set shellxquote=
-" Markdown specific settings
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-let g:markdown_fenced_languages += ['javascript', 'css', 'ps1']
+"set shell="C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+" setting the vim shell to cmd
+"set shell=cmd.exe
+"set shellquote="("
+"set shellxescape="/"&|<>()@^"
 
-cd $HOME
-"source $HOME\vimfiles\lastsession.vim
+" ----- Markdown specific settings -----
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sh', 'dosini', 'dosbatch', 'cpp']
+let g:markdown_fenced_languages += ['javascript', 'css', 'js=javascript', 'conf=dosini']
 
+"VIM markdown highlighting "underscore hack"
+syn match markdownError "/w/@<=/w/@="
+" -----     -----"
+
+"source $HOME/.vim/lastsession.vim
+
+"saving some little finger strain by re-mapping the esc key
+"https://vi.stackexchange.com/questions/16963/remap-esc-key-in-vim
+" esc in insert mode
+inoremap kj <esc>
+
+" esc in command mode
+cnoremap kj <C-C>
+" " Note: In command mode mappings to esc run the command for some odd
+" " historical vi compatibility reason. We use the alternate method of
+" " existing which is Ctrl-C
 
 
 
 "----- lightweight status bar -----"
-source $HOME\vimfiles\vimrc_statusbar.vim
+source $HOME/.vim/vimrc_statusbar.vim
 
 "----- Custom Keys -----"
-source $HOME\vimfiles\vimrc_keys.vim
+source $HOME/.vim/vimrc_keys.vim
 
 "----- GUI settings -----"
-source $HOME\vimfiles\vimrc_gui.vim
-source $HOME\vimfiles\vimrc_gui-keys.vim
+"source $HOME/.vim/vimrc_gui.vim
+"source $HOME/.vim/vimrc_gui-keys.vim
 
