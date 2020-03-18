@@ -1,5 +1,5 @@
 "Grab the global vimrc"
-source /etc/vimrc
+"source /etc/vimrc
 "==============================="
 "----- Personal settings -----"
 
@@ -22,6 +22,7 @@ let g:PaperColor_Theme_Options = {'theme' : {'default': {	'transparent_backgroun
 "colorscheme gruvbox "https://github.com/morhetz/gruvbox
 "colorscheme  base16-irblack
 
+syntax on
 set background=dark "sets the background as dark | light
 set linebreak
 set number "sets the line numbers shown
