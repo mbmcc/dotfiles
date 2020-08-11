@@ -1,0 +1,84 @@
+! .Xresources for all X11 application settings
+! to load run ato load run  xrdb ~/.Xresources
+!
+! Unicode-Rxvt color 256 settings
+URxvt.font: xft:DejaVuSansMono:size=16
+
+! Dark background light text
+!URxvt.reverseVideo: True
+
+! COLOURS AND GRAPHICS
+!        In addition to the default foreground and background colours, urxvt can
+!        display up to 88/256 colours: 8 ANSI colours plus high-intensity
+!        (potentially bold/blink) versions of the same, and 72 (or 240 in 256
+!        colour mode) colours arranged in an 4x4x4 (or 6x6x6) colour RGB cube
+!        plus a 8 (24) colour greyscale ramp.
+! 
+!        Here is a list of the ANSI colours with their names.
+! 
+!        color0       (black)            = Black
+!        color1       (red)              = Red3
+!        color2       (green)            = Green3
+!        color3       (yellow)           = Yellow3
+!        color4       (blue)             = Blue3
+!        color5       (magenta)          = Magenta3
+!        color6       (cyan)             = Cyan3
+!        color7       (white)            = AntiqueWhite
+!        color8       (bright black)     = Grey25
+!        color9       (bright red)       = Red
+!        color10      (bright green)     = Green
+!        color11      (bright yellow)    = Yellow
+!        color12      (bright blue)      = Blue
+!        color13      (bright magenta)   = Magenta
+!        color14      (bright cyan)      = Cyan
+!        color15      (bright white)     = White
+!        foreground                      = Black
+!        background                      = White
+! 
+!                                                                                                                                                                                It is also possible to specify the colour values of foreground,
+!        background, cursorColor, cursorColor2, colorBD, colorUL as a number
+!        0-15, as a convenient shorthand to reference the colour name of
+!        color0-color15.
+! 
+!        The following text gives values for the standard 88 colour mode (and
+!        values for the 256 colour mode in parentheses).
+
+! Transparent background
+!  https://wiki.archlinux.org/index.php/Rxvt-unicode/Tips_and_tricks#True_transparency
+URxvt.depth: 32
+! URxvt.background: [95]#000000
+! or 
+URxvt.background: rgba:1111/1111/1111/dddd
+URxvt.foreground: darkgray
+
+! Low contrast theme, based on Zenburn <http://slinky.imukuppi.org/zenburnpage/>
+! Modified from <https://gist.github.com/564084>
+URxvt.color0:           #3f3f3f
+URxvt.color1:           #705050
+URxvt.color2:           #00b45a
+URxvt.color3:           #dfcf8f
+URxvt.color4:           #506070
+URxvt.color5:           #dc8cc3
+URxvt.color6:           #8cd0d3
+URxvt.color7:           #dcdccc
+URxvt.color8:           #709080
+URxvt.color9:           #cc5454
+URxvt.color10:          #4d9f4d
+URxvt.color11:          #f0dfaf
+URxvt.color12:          #4186be
+URxvt.color13:          #ec93d3
+URxvt.color14:          #93e0e3
+URxvt.color15:          #ffffff
+URxvt.colorBD:          #9bfffa
+URxvt.colorIT:          #9bfffa
+! copy to builtin "PRIMARY" clipboard left click select right click yank
+! middle click to paste
+! CTRL-META-C to copy to system clipboard
+! CTRL-META-V to paste from system clipboard
+URxvt.url-launcher: /usr/bin/xdg-open
+
+! Scrollbar off
+URxvt.scrollBar: False
+! Allow scrollback in secondary screens like pager, less, man
+URxvt.secondaryScreen: False
+URxvt.secondarySroll: False
