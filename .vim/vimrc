@@ -36,10 +36,10 @@ set spellfile=$HOME:/.vim/spell/tech.en-us.add
 " Setting some text / page formatting
 set autoindent " automagically remember indent in new lines
 set smartindent " uses automagic indenting and understands some C code conventions
-set tabstop=8 "hard tab stops at certain characters
+set tabstop=4 "hard tab stops at certain characters
 set smarttab "uses sw st and ts but remembers for <BS>
-set softtabstop=4 "use with shiftwidt to set tab char value without changing tab setting
-set shiftwidth=4 "The number of characters that indent when you choose > indentation
+set softtabstop=2 "use with shiftwidt to set tab char value without changing tab setting
+set shiftwidth=2 "The number of characters that indent when you choose > indentation
 set expandtab "use spaces use instead of <tab> 
     
 " setting the special character values
@@ -65,10 +65,10 @@ syn match markdownError "/w/@<=/w/@="
 "saving some little finger strain by re-mapping the esc key
 "https://vi.stackexchange.com/questions/16963/remap-esc-key-in-vim
 " esc in insert mode
-inoremap kj <esc>
+"inoremap kj <esc>
 
 " esc in command mode
-cnoremap kj <C-C>
+"cnoremap kj <C-C>
 " " Note: In command mode mappings to esc run the command for some odd
 " " historical vi compatibility reason. We use the alternate method of
 " " existing which is Ctrl-C
