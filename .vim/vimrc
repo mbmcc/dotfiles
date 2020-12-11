@@ -7,9 +7,9 @@ source $VIM/vimrc
 " setting the vim shell to powershell
 "set shell="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
 " setting the vim shell to cmd
-set shell=C:\Windows\System32\cmd.exe
-set shellquote="("
-set shellcmdflag="/K"
+"set shell=C:\Windows\System32\cmd.exe
+"set shellquote="("
+"set shellcmdflag="/K"
 "set shellxescape="\"&|<>()@^"
 
 "
@@ -23,6 +23,8 @@ set hidden "Throw modified but unsaved buffers in the 'background'
 
 set viminfo='10,<50,s10,h,rA:,rB:
 
+"to allow unicode support in the vimrc
+set encoding=utf-8
 
 colorscheme PaperColor
 let g:PaperColor_Theme_Options = {'theme' : {'default': {'transparent_background': 1}}}
@@ -51,7 +53,7 @@ set shiftwidth=2 "The number of characters that indent when you choose > indenta
 set noexpandtab "don't use spaces use <tab> instead
 
 " setting the special character values
-set listchars=tab:¿¿¬,space:¿,nbsp:¤,trail:°,eol:¶,precedes:«,extends:»
+set listchars=tab:Â¬â€¢â€£,space:â€§,nbsp:Â¤,trail:Â°,eol:Â¶,precedes:Â«,extends:Â»
 
 "source $HOME/.vim/lastsession.vim
 
@@ -72,36 +74,6 @@ source $HOME/.vim/vimrc_keys.vim
 "----- GUI settings -----"
 source $HOME/.vim/vimrc_gui.vim
 source $HOME/.vim/vimrc_gui-keys.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom Key Mappings
-"
-"saving some little finger strain by re-mapping the esc key
-"https://vi.stackexchange.com/questions/16963/remap-esc-key-in-vim
-
-" esc in insert mode
-inoremap kj <esc>
-
-" esc in command mode
-cnoremap kj <C-C>
-" " Note: In command mode mappings to esc run the command for some odd
-" " historical vi compatibility reason. We use the alternate method of
-" " existing which is Ctrl-C
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" https://medium.com/@sszreter/vim-tab-autocomplete-in-insert-mode-and-fuzzy-search-for-opening-files-484260f52618
-" MULTIPURPOSE TAB KEY
-" " Indent if we're at the beginning of a line. Else, do completion.
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <c-n>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 
