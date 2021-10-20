@@ -1,3 +1,4 @@
+
 "----- GUI settings -----"
 set guifont=Lucida_Console:h11:cANSI:qDRAFT
 set guioptions-=m  "remove menu bar

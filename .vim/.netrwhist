@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/data/data/com.termux/files/home/git/CS131_Wk3/db_Mileage-Log'
-let g:netrw_dirhist_2='/data/data/com.termux/files/home/.vim/bundle/Vundle.vim'
-let g:netrw_dirhist_3='/data/data/com.termux/files/home'
-let g:netrw_dirhist_4='/data/data/com.termux/files/home/.vim'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/matthew/.config/ranger'
+let g:netrw_dirhist_6='/home/matthew/Documents/Unemployment'
+let g:netrw_dirhist_5='/home/matthew/Documents'
+let g:netrw_dirhist_4='/home/matthew'
+let g:netrw_dirhist_3='/home/matthew/Downloads/sosreport-juju-4e2f68-o7k-focal-4-2020-09-30-jaosocw'
+let g:netrw_dirhist_2='/home/matthew/Downloads/sosreport-juju-4e2f68-o7k-focal-4-2020-09-30-jaosocw/etc'
+let g:netrw_dirhist_1='/home/matthew/Downloads/sosreport-juju-4e2f68-o7k-focal-4-2020-09-30-jaosocw'

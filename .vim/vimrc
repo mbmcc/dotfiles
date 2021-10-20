@@ -1,16 +1,5 @@
-"Grab the global vimrc"
-"source $VIM\_vimrc
-source $VIM/vimrc
 
-"----- Windows OS settings -----"
-"set runtimepath+="H:/","H:/.vim"
-" setting the vim shell to powershell
-"set shell="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-" setting the vim shell to cmd
-"set shell=C:\Windows\System32\cmd.exe
-"set shellquote="("
-"set shellcmdflag="/K"
-"set shellxescape="\"&|<>()@^"
+"----- Personal settings -----"
 
 "
 "----- Misc Temp files -----"
@@ -18,29 +7,24 @@ set backupdir=$HOME/.vim/tmp//
 set directory=$HOME/.vim/tmp//
 set undodir=$HOME/.vim/tmp//
 
-set hidden "Throw modified but unsaved buffers in the 'background'
+set hidden "Thow modified but unsaved buffers in the 'background'
 " make sure to save your work before exiting
 
-set viminfo='10,<50,s10,h,rA:,rB:
 
-"to allow unicode support in the vimrc
-set encoding=utf-8
 
-colorscheme PaperColor
-let g:PaperColor_Theme_Options = {'theme' : {'default': {'transparent_background': 1}}}
+colorscheme PaperColor 
+let g:PaperColor_Theme_Options = { 'theme' : {   'default': { 	'transparent_background': 1    }   }  }
+
 "colorscheme solarized "https://github.com/altercation/vim-colors-solarized
 "colorscheme gruvbox "https://github.com/morhetz/gruvbox
 "colorscheme  base16-irblack
 
-set laststatus=2 "show the status bar the whole time
 set background=dark "sets the background as used by gruvbox dark | light
-set wrap "It doesn't change the text in the buffer. Lines longer than the width of the window will wrap and displaying continues on the next line.
-set linebreak "If on, Vim will wrap long lines at a character in 'breakat' rather than at the last character that fits on the screen.
+set linebreak
 set number "sets the line numbers shown
 set relativenumber "sets the line number to relative position
+set laststatus=2 "show the status bar the whole time
 
-set spellsuggest+=10
-set spellfile=$HOME/.vim/spell/tech.en-us.add
 " notes about tabs and indenting
 " https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
 " Setting some text / page formatting
@@ -48,22 +32,25 @@ set autoindent " automagically remember indent in new lines
 set smartindent " uses automagic indenting and understands some C code conventions
 set tabstop=8 "hard tab stops at certain characters
 set smarttab "uses sw st and ts but remembers for <BS>
-set softtabstop=2 "use with shiftwidt to set tab char value without changing tab setting
-set shiftwidth=2 "The number of characters that indent when you choose > indentation
-set noexpandtab "don't use spaces use <tab> instead
+set softtabstop=4 "use with shiftwidt to set tab char value without changing tab setting
+set shiftwidth=4 "The number of characters that indent when you choose > indentation
 
 " setting the special character values
-set listchars=tab:Â¬â€¢â€£,space:â€§,nbsp:Â¤,trail:Â°,eol:Â¶,precedes:Â«,extends:Â»
+set listchars=tab:¬¸,space:·,nbsp:¤,trail:°,eol:¶,precedes:«,extends:»
 
+"" setting the vim shell to powershell
+"set shell=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+"set shellcmdflag=-ArgumentList
+"set shellquote="
+"set shellxquote=
+
+" Markdown specific settings
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
+
+"cd $HOME
 "source $HOME/.vim/lastsession.vim
 
-" ----- Markdown specific settings -----
-let g:markdown_fenced_languages=['html', 'python', 'bash=sh', 'sh', 'dosini', 'dosbatch', 'cpp']
-let g:markdown_fenced_languages+=['javascript', 'css', 'ps1', 'js=javascript']
-let g:markdown_folding=1
-
-"VIM markdown highlighting "underscore hack"
-syn match markdownError "\w\@<=\w\@="
 
 "----- lightweight status bar -----"
 source $HOME/.vim/vimrc_statusbar.vim
@@ -74,6 +61,4 @@ source $HOME/.vim/vimrc_keys.vim
 "----- GUI settings -----"
 source $HOME/.vim/vimrc_gui.vim
 source $HOME/.vim/vimrc_gui-keys.vim
-
-
 
