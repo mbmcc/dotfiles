@@ -1,0 +1,76 @@
+
+"----- Personal settings -----"
+
+"
+"----- Misc Temp files -----"
+set backupdir=$HOME/.vim/tmp//
+set directory=$HOME/.vim/tmp//
+set undodir=$HOME/.vim/tmp//
+
+set hidden "Thow modified but unsaved buffers in the 'background'
+" make sure to save your work before exiting
+
+
+
+colorscheme PaperColor 
+let g:PaperColor_Theme_Options = { 'theme' : {   'default': { 	'transparent_background': 1    }   }  }
+
+"colorscheme solarized "https://github.com/altercation/vim-colors-solarized
+"colorscheme gruvbox "https://github.com/morhetz/gruvbox
+"colorscheme  base16-irblack
+
+set background=dark "sets the background as used by gruvbox dark | light
+set linebreak
+set number "sets the line numbers shown
+set relativenumber "sets the line number to relative position
+set laststatus=2 "show the status bar the whole time
+
+" notes about tabs and indenting
+" https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
+" Setting some text / page formatting
+set autoindent " automagically remember indent in new lines
+set smartindent " uses automagic indenting and understands some C code conventions
+set tabstop=8 "hard tab stops at certain characters
+set smarttab "uses sw st and ts but remembers for <BS>
+set softtabstop=4 "use with shiftwidt to set tab char value without changing tab setting
+set shiftwidth=4 "The number of characters that indent when you choose > indentation
+
+" setting the special character values
+set listchars=tab:¬¸,space:·,nbsp:¤,trail:°,eol:¶,precedes:«,extends:»,conceal:+
+
+"" setting the vim shell to powershell
+"set shell=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+"set shellcmdflag=-ArgumentList
+"set shellquote="
+"set shellxquote=
+
+" Markdown specific settings
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
+
+"cd $HOME
+"source $HOME/.vim/lastsession.vim
+
+"from :h ins-completion
+
+function! CleverTab()
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+	return "\<Tab>"
+    else
+	return "\<C-N>"
+    endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
+
+
+
+"----- lightweight status bar -----"
+source $HOME/.vim/vimrc_statusbar.vim
+
+"----- Custom Keys -----"
+source $HOME/.vim/vimrc_keys.vim
+
+"----- GUI settings -----"
+source $HOME/.vim/vimrc_gui.vim
+source $HOME/.vim/vimrc_gui-keys.vim
+

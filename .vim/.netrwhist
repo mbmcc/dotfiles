@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/cygdrive/c/Users/mmccourr/Downloads'
+let g:netrw_dirhist_3='/cygdrive/c/Users/mmccourr/Downloads/U_RHEL_7_V3R6_STIG'
+let g:netrw_dirhist_2='/cygdrive/c/Users/mmccourr/Downloads/U_RHEL_7_V3R6_STIG/U_RHEL_7_V3R6_Manual_STIG'
+let g:netrw_dirhist_1='/cygdrive/c/Users/mmccourr/Documents/SOC_Training'
+let g:netrw_dirhist_0='/cygdrive/c/Users/mmccourr/Documents'
+let g:netrw_dirhist_9='/cygdrive/c/Users/mmccourr'
+let g:netrw_dirhist_8='/cygdrive/c/Users/mmccourr/Downloads'
+let g:netrw_dirhist_7='/cygdrive/c/Users/mmccourr'
+let g:netrw_dirhist_6='/cygdrive/c/Users/mmccourr/Documents'
+let g:netrw_dirhist_5='/cygdrive/c/Users/mmccourr'
