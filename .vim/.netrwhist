@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/cygdrive/c/Users/mmccourr/Notes/Linux/ansible'
+let g:netrw_dirhist_9='/cygdrive'
+let g:netrw_dirhist_8='/cygdrive/c'
+let g:netrw_dirhist_7='/cygdrive/c/Users/mmccourr/Notes/Linux'
+let g:netrw_dirhist_6='/cygdrive/c/Users'
+let g:netrw_dirhist_5='/cygdrive/c/Users/mmccourr/Notes'
+let g:netrw_dirhist_4='/cygdrive/c/Users/mmccourr'
+let g:netrw_dirhist_3='/cygdrive/c/Users/mmccourr/Notes/Reports'
+let g:netrw_dirhist_2='/cygdrive/c/Users/mmccourr/Notes'
+let g:netrw_dirhist_1='/cygdrive/c/Users/mmccourr'

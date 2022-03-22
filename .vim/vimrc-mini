@@ -3,7 +3,6 @@ set background=dark "sets the background as used by gruvbox dark | light
 set linebreak "allows vim to use `breakat` instead of just wrapping at the screen
 set number "sets the line numbers shown
 set relativenumber "sets the line number to relative position
-set laststatus=2 "show the status bar the whole time
 set hidden "Thow modified but unsaved buffers in the 'background' make sure to save your work before exiting
 
 " notes about tabs and indenting
@@ -15,6 +14,7 @@ set tabstop=8 "hard tab stops at certain characters
 set smarttab "uses sw st and ts but remembers for <BS>
 set softtabstop=4 "use with shiftwidt to set tab char value without changing tab setting
 set shiftwidth=4 "The number of characters that indent when you choose > indentation
+set lazyredraw
 
 " setting the special character values
 set listchars=tab:¬¸,space:·,nbsp:¤,trail:°,eol:¶,precedes:«,extends:»,conceal:+

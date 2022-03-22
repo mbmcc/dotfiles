@@ -74,5 +74,5 @@ nnoremap <Leader>6 mh0i######<Space><Esc>`h7l
 
 
 "" Remove Undserscore highlighting hack
-" syn match markdownError "\w\@<=\w\@="
+nnoremap <Leader>m :syn match markdownError "\w\@<=\w\@="<CR>
 
