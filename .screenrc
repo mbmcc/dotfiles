@@ -1,11 +1,10 @@
 #from https://opensource.com/article/21/4/gnu-screen-cheat-sheet
-## status bar, with current window highlighted
-hardstatus alwayslastline
-hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w       %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
-#
-## enable 256 colors
-attrcolor b ".I"
-termcapinfo xterm-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-defbce off
-term "screen-256color"
-#
+# status bar, with current window highlighted
+ hardstatus alwayslastline
+ hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%c%{g}]'
+#  
+#  # enable 256 colors
+  attrcolor b ".I"
+  termcapinfo xterm-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+  defbce off
+  term "screen-256color"
