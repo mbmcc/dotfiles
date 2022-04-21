@@ -1,6 +1,6 @@
 "Grab the global vimrc"
 source $VIM\_vimrc
-colorscheme= gruvbox
+colorscheme gruvbox
 "----- GUI settings -----"
 set guifont=hack\ 14
 set guioptions-=m  "remove menu bar

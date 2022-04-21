@@ -92,11 +92,6 @@ source $HOME/.vim/vimrc_statusbar
 "----- Custom Keys -----"
 source $HOME/.vim/vimrc_keys
 
-"----- GUI settings -----"
-source $HOME/.vim/vimrc_gui
-source $HOME/.vim/vimrc_gui-keys
-
-
 "----- Plugin Manager -----"
 call plug#begin('~/.vim/pack/plugged')
 " The default plugin directory will be as follows:
