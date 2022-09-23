@@ -1,10 +1,22 @@
-"Grab the global vimrc"
-source $VIM\_vimrc
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+
+" Get the defaults that most users want.
+source $VIMRUNTIME/defaults.vim
+
 colorscheme gruvbox
+
 "----- GUI settings -----"
-set guifont=hack\ 14
+" set guifont=hack\ 14
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
+"Keys to toggle the Menu Bar <CTRL-F1>, Tool Bar <CTRL-F2>, and Scrollbar
+"<CTRL-F3>
+nnoremap <C-F4> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>

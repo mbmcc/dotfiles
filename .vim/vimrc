@@ -1,4 +1,4 @@
-
+"------------------------------"
 "----- Personal settings -----"
 
 "
@@ -32,7 +32,7 @@ set hidden "allows you to change buffers without saving first, remember to save 
 " Setting some text / page formatting
 set autoindent " automagically remember indent in new lines
 set smartindent " uses automagic indenting and understands some C code conventions
-set tabstop=8 "hard tab stops at certain characters
+set tabstop=20 "hard tab stops at certain characters
 set smarttab "uses sw st and ts but remembers for <BS>
 set softtabstop=4 "use with shiftwidt to set tab char value without changing tab setting
 set shiftwidth=4 "The number of characters that indent when you choose > indentation
@@ -47,35 +47,39 @@ set wildmenu
 "path looks in folder, subfolder, and subfolders of subfolders
 set path+=**
 
+"------------------------------"
+"----- Custom Functions -----"
 
-
-"----- Special Settings -----
-
-" Markdown specific settings
-let g:markdown_folding = 1
-let g:markdown_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
-
-"cd $HOME
-"source $HOME/.vim/lastsession.vim
-
-"from :h ins-completion
+" TAB Completion
+" "from :h ins-completion
 
 function! CleverTab()
     if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-	return "\<Tab>"
+        return "\<Tab>"
     else
-	return "\<C-N>"
+        return "\<C-N>"
     endif
 endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
 
-"----- Netrw settings -----"
-"makes a "file tree browser" on the left
-let g:netrw_preview   = 1
-let g:netrw_liststyle = 3
-let g:netrw_winsize   = 30
+"------------------------------"
+"----- Special Settings -----"
 
+"----- lightweight status bar -----"
+source $HOME/.vim/vimrc_statusbar
+
+"----- Custom Keys -----"
+source $HOME/.vim/vimrc_keys
+
+
+" ----- Markdown specific settings -----"  
+let g:markdown_folding = 1
+let g:markdown_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
+
+au BufRead,BufNewFile *.md source ~/.vim/markdown_keys
+
+"----- Netrw settings -----"
 " These will:
 " 
 " 1. Make vertical splitting the default for previewing files
@@ -84,14 +88,13 @@ let g:netrw_winsize   = 30
 " will use only 30% of the columns available; the rest of the window
 " is used for the preview window.
 
+"makes a "file tree browser" on the left
+let g:netrw_preview   = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize   = 30
 
 
-"----- lightweight status bar -----"
-source $HOME/.vim/vimrc_statusbar
-
-"----- Custom Keys -----"
-source $HOME/.vim/vimrc_keys
-
+"------------------------------"
 "----- Plugin Manager -----"
 call plug#begin('~/.vim/pack/plugged')
 " The default plugin directory will be as follows:
@@ -117,6 +120,12 @@ Plug 'dhruvasagar/vim-table-mode'
 " tags, and more. The plugin provides mappings to easily delete, change and
 " add such surroundings in pairs.
 Plug 'tpope/vim-surround'
+
+
+" Easy and light csv manipulation
+" https://github.com/mechatroner/rainbow_csv
+"
+Plug 'mechatroner/rainbow_csv'
 
 " Initialize plugin system
 call plug#end()
