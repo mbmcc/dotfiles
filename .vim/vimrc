@@ -1,27 +1,6 @@
 "------------------------------"
 "----- Personal settings -----"
 
-"
-"----- Misc Temp files -----"
-set backupdir=$HOME/.vim/tmp//
-set directory=$HOME/.vim/tmp//
-set undodir=$HOME/.vim/tmp//
-
-
-set spellfile=$HOME/.vim/spell/nasatechspeak.utf-8.add
-
-"colorscheme PaperColor 
-"let g:PaperColor_Theme_Options = { 'theme' : {   'default': { 	'transparent_background': 1    }   }  }
-
-"colorscheme solarized "https://github.com/altercation/vim-colors-solarized
-"colorscheme gruvbox "https://github.com/morhetz/gruvbox
-colorscheme mygruvbox 
-" for setting the bad spelled word to red underline
-" hi SpellBad term=reverse cterm=undercurl gui=undercurl guisp=#83a598 ctermfg=167 guifg=#fb4934
-
-
-
-set background=dark "sets the background as used by gruvbox dark or light
 set linebreak
 set number "sets the line numbers shown
 set relativenumber "sets the line number to relative position
@@ -47,26 +26,32 @@ set wildmenu
 "path looks in folder, subfolder, and subfolders of subfolders
 set path+=**
 
-"------------------------------"
-"----- Custom Functions -----"
+"----- Temp files and Spelling -----"
+set backupdir=$HOME/.vim/tmp//
+set directory=$HOME/.vim/tmp//
+set undodir=$HOME/.vim/tmp//
 
-" TAB Completion
-" "from :h ins-completion
+set spellfile=$HOME/.vim/spell/nasatechspeak.utf-8.add
 
-function! CleverTab()
-    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-        return "\<Tab>"
-    else
-        return "\<C-N>"
-    endif
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
+"----- Themes and Colors -----"
+set background=dark 
 
+"colorscheme PaperColor 
+"let g:PaperColor_Theme_Options = { 'theme' : {   'default': { 	'transparent_background': 1    }   }  }
+
+"colorscheme solarized "https://github.com/altercation/vim-colors-solarized
+"colorscheme gruvbox "https://github.com/morhetz/gruvbox
+
+colorscheme mygruvbox 
+let g:gruvbox_contrast_dark = 'hard'
+
+" for setting the bad spelled word to red underline
+" hi SpellBad term=reverse cterm=undercurl gui=undercurl guisp=#83a598 ctermfg=167 guifg=#fb4934
 
 "------------------------------"
 "----- Special Settings -----"
 
-"----- lightweight status bar -----"
+"----- Status bar -----"
 source $HOME/.vim/vimrc_statusbar
 
 "----- Custom Keys -----"
@@ -92,6 +77,23 @@ au BufRead,BufNewFile *.md source ~/.vim/markdown_keys
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
+
+
+
+"------------------------------"
+"----- Custom Functions -----"
+
+" TAB Completion
+" "from :h ins-completion
+
+function! CleverTab()
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        return "\<C-N>"
+    endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
 
 
 "------------------------------"
