@@ -124,8 +124,21 @@ Plug 'tpope/vim-surround'
 
 " Easy and light csv manipulation
 " https://github.com/mechatroner/rainbow_csv
-"
 Plug 'mechatroner/rainbow_csv'
+
+""""" Themes
+" Gruvbox (Good Markdown)
+Plug ''
+
+" Molokai (No Markdown)
+Plug 'tomasr/molokai'
+
+" PaperColor (Some markdown)
+Plug 'NLKNguyen/papercolor-theme'
+
+" Pencil (markdown)
+Plug 'preservim/vim-colors-pencil'
+
 
 " Initialize plugin system
 call plug#end()
