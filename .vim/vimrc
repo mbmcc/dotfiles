@@ -128,7 +128,7 @@ Plug 'mechatroner/rainbow_csv'
 
 """"" Themes
 " Gruvbox (Good Markdown)
-Plug ''
+Plug 'morhetz/gruvbox'
 
 " Molokai (No Markdown)
 Plug 'tomasr/molokai'
