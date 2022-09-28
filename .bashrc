@@ -174,7 +174,7 @@ if [ -f /usr/share/git-*/contrib/completion/git-prompt.sh ]; then
     GIT_PS1_SHOWUPSTREAM="auto"
     if [ "$color_prompt" = yes ]; then
         GIT_PS1_SHOWCOLORHINTS=1
-        export PROMPT_COMMAND='__git_ps1 "\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]" "\n\\\$ "'
+        export PROMPT_COMMAND='__git_ps1 "\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]" "\n\\$ "'
 
     else
         # Git but no color fancy prompt
@@ -183,11 +183,12 @@ if [ -f /usr/share/git-*/contrib/completion/git-prompt.sh ]; then
 else 
     if [ "$color_prompt" = yes ]; then
         # Facny color prompt but no git
-        export PROMPT_COMMAND="\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]\n\\\$ "
+        unset PROMPT_COMMAND
+        export PS1="\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]\n\\$ "
 
     else
         # No Git and no color, fancy prompt
-        PS1=' \D{%d/%b/%Y %T}\n[\u@\h] [\w]\n\\\$ '
+        export PS1=' \D{%d/%b/%Y %T}\n[\u@\h] [\w]\n\\$ '
     fi
 fi
 
