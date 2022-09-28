@@ -5,7 +5,7 @@
 # Description : 
 # 
 # Created : 
-# Last modified : Fri Sep 23 16:25:31 PDT 2022
+# Last modified : Tue Sep 27 17:29:40 PDT 2022
 ###############
 
 ## ~/.bashrc: executed by bash(1) for non-login shells.
@@ -51,11 +51,6 @@ else
     export EDITOR=/usr/bin/vi
 fi
 
-## fancy prompt and if able color! 
-case "$TERM" in 
-xterm-color|*-256color) 
-    color_prompt=yes;;
-esac
 ## man bash
 ## PROMPTING
 ## When  executing  interactively,  bash  displays the primary prompt PS1 when it is ready to read a command, and the sec‐
@@ -165,27 +160,40 @@ esac
 ## 
 ## 
 ## 
-## Lets see if we can add git to the prompt
+## can we be in color?! 
+case "$TERM" in 
+xterm-color|*-256color) 
+    color_prompt=yes;;
+esac
+## Lets see if we can add git and a fancy color prompt
 if [ -f /usr/share/git-*/contrib/completion/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
     GIT_PS1_SHOWUPSTREAM="auto"
+    if [ "$color_prompt" = yes ]; then
+        GIT_PS1_SHOWCOLORHINTS=1
+        export PROMPT_COMMAND='__git_ps1 "\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]" "\n\\\$ "'
+
+    else
+        # Git but no color fancy prompt
+        PS1=' \D{%d/%b/%Y %T}\n[\u@\h] [\w] $(__git_ps1 " (%s)") \n\$ '
+    fi
 else 
-## if not just set that var to blank
-    __git_ps1=""
+    if [ "$color_prompt" = yes ]; then
+        # Facny color prompt but no git
+        export PROMPT_COMMAND="\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]\n\\\$ "
+
+    else
+        # No Git and no color, fancy prompt
+        PS1=' \D{%d/%b/%Y %T}\n[\u@\h] [\w]\n\\\$ '
+    fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    GIT_PS1_SHOWCOLORHINTS=1
-    export PROMPT_COMMAND='__git_ps1 "\[\033[00;33m\]\D{%d/%b/%Y %T}\n\[\033[00;34m\]\u\[\033[01;32m\]@\[\033[0;35m\]\h\[\033[00m\] [\[\033[01;34m\]\w\[\033[00m\]]" "\n\\\$ "'
-
-else
-    PS1=' \D{%d/%b/%Y %T}\n[\u@\h] [\w] $(__git_ps1 " (%s)") \n\$ '
-fi
 unset color_prompt 
 
+# User specific aliases and functions
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -206,4 +214,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# User specific aliases and functions
