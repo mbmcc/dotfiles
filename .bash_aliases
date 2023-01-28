@@ -9,24 +9,27 @@
 # Last modified : Created : Tue Aug 23 17:22:17 PDT 2022
 ###############
 
+# Misc
+alias fulldate='date +"%A, %B %d,%Y %l:%M %p %Z"'
+
 # Grepping
 
+alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
 
 ## Some ls aliases
 
 alias dir='dir --color=auto'
-alias l.='ls -d .* --color=auto'
+alias ls='ls -h --color=auto'
+alias l.='ls -d .*'
 alias l='ls -CF'
 alias la='ls -A'
 alias ld='ls -d */'
-alias lg='ls --group-directories-first --color=auto'
+alias lg='ls --group-directories-first'
 alias lh='ls -lah'
-alias ll='ls -l --color=auto'
-alias ls='ls --color=auto'
-alias lt='ls --group-directories-first --color=auto --sort=time'
+alias ll='ls -l'
+alias lt='ls --group-directories-first --sort=time'
 alias lx='ls -x'
 alias vdir='vdir --color=auto'
 alias md='mkdir'
@@ -41,11 +44,11 @@ fi
 # ssh sessions
 
 alias ironhide='ssh -v -M ironhide'
-alias bastion='ssh -v -M ironhide'
-alias jumparc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:127.0.0.1:13389'
-alias jumpa='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:127.0.0.1:13389'
-alias jumpjsc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:127.0.0.1:23389'
-alias jumpj='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:127.0.0.1:23389'
+alias bastion='ssh -vv -M ironhide'
+alias jumparc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:soc-p-jump-ar01.soc.nasa.gov /w:1440 /h:1200'
+alias jumpa='jumparc'
+alias jumpjsc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:soc-p-jump-js01.soc.nasa.gov /w:1440 /h:1200'
+alias jumpj='jumpjsc'
 
 ## cygwin
 if [ $(uname -o) == "Cygwin" ]
