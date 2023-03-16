@@ -5,7 +5,7 @@
 # Description : 
 # 
 # Created : 
-# Last modified : Fri Dec 16 14:06:09 PST 2022
+# Last modified : Thu Mar 16 12:27:40 PDT 2023
 ###############
 
 ## ~/.bashrc: executed by bash(1) for non-login shells.
@@ -169,24 +169,33 @@ xterm-color|*-256color)
     color_prompt=yes;;
 esac
 if [ "$color_prompt" == "yes" ];then
-COLOR_BLACK="0;30m"
-COLOR_BLUE="0;34m"
-COLOR_GREEN="0;32m"
-COLOR_CYAN="0;36m"
-COLOR_RED="0;31m"
-COLOR_PURPLE="0;35m"
-COLOR_BROWN="0;33m"
-COLOR_GRAY="0;37m"
-COLOR_BOLD_GRAY="1;30m"
-COLOR_BOLD_BLUE="1;34m"
-COLOR_BOLD_GREEN="1;32m"
-COLOR_BOLD_CYAN="1;36m"
-COLOR_BOLD_RED="1;31m"
-COLOR_BOLD_PURPLE="1;35m"
-COLOR_YELLOW="1;33m"
-COLOR_WHITE="1;37m"
-COLOR_RESET="00m"
+COLOR_BLACK="\[\033[0;30m\]"
+COLOR_BLUE="\[\033[0;34m\]"
+COLOR_GREEN="\[\033[0;32m\]"
+COLOR_CYAN="\[\033[0;36m\]"
+COLOR_RED="\[\033[0;31m\]"
+COLOR_PURPLE="\[\033[0;35m\]"
+COLOR_BROWN="\[\033[0;33m\]"
+COLOR_GRAY="\[\033[0;37m\]"
+COLOR_BOLD_GRAY="\[\033[1;30m\]"
+COLOR_BOLD_BLUE="\[\033[1;34m\]"
+COLOR_BOLD_GREEN="\[\033[1;32m\]"
+COLOR_BOLD_CYAN="\[\033[1;36m\]"
+COLOR_BOLD_RED="\[\033[1;31m\]"
+COLOR_BOLD_PURPLE="\[\033[1;35m\]"
+COLOR_YELLOW="\[\033[1;33m\]"
+COLOR_WHITE="\[\033[1;37m\]"
+COLOR_RESET="\[\033[00m\]"
 fi
+
+## Lets see if we are running in a python virtual environment
+function set_virtualenv () {
+    if test -z "$VIRTUAL_ENV" ; then
+	PYTHON_VIRTUALENV=""
+    else
+	PYTHON_VIRTUALENV="<${COLOR_YELLOW}venv${COLOR_RESET}:`basename $VIRTUAL_ENV`>"
+    fi
+}
 
 ## Lets see if we can add git to the prompt
 if [ -f /usr/share/git-*/contrib/completion/git-prompt.sh ]; then
@@ -197,18 +206,18 @@ if [ -f /usr/share/git-*/contrib/completion/git-prompt.sh ]; then
     GIT_PS1_SHOWUPSTREAM="auto"
     if [ "$color_prompt" == "yes" ]; then
         GIT_PS1_SHOWCOLORHINTS=1
-        export PROMPT_COMMAND='__git_ps1 "\[\033[$COLOR_BLUE\]\D{%d/%b/%Y %T}\n\[\033[$COLOR_CYAN\]\u\[\033[$COLOR_RESET\]@\[\033[$COLOR_PURPLE\]\h\[\033[$COLOR_RESET\] [\[\033[$COLOR_BOLD_BLUE\]\w\[\033[$COLOR_RESET\]]" "\n\\$ "'
+	export PROMPT_COMMAND='set_virtualenv;__git_ps1 "$COLOR_BLUE\D{%d/%b/%Y %T}$COLOR_RESET $PYTHON_VIRTUALENV" "\n$COLOR_CYAN\u$COLOR_RESET@$COLOR_PURPLE\h$COLOR_RESET [$COLOR_BOLD_BLUE\w$COLOR_RESET]\n\\$ "'
 
     else
         # Git but no color fancy prompt
-        export PROMPT_COMMAND='__git_ps1 "  \D{%d/%b/%Y %T}\n  [\u@\h] [\w]" "\n  \\$ "'
+        export PROMPT_COMMAND='set_virtualenv;__git_ps1 "  \D{%d/%b/%Y %T}\n  [\u@\h] [\w]" "\n  \\$ "'
     fi
 else  
     # No Git
     unset PROMPT_COMMAND
     if [ "$color_prompt" == "yes" ]; then
         # Fancy color prompt but no git
-        export PS1="\[\033[$COLOR_BLUE\]\D{%d/%b/%Y %T}\n\[\033[$COLOR_CYAN\]\u\[\033[$COLOR_RESET\]@\[\033[$COLOR_PURPLE\]\h\[\033[$COLOR_RESET\] [\[\033[$COLOR_BOLD_BLUE\]\w\[\033[$COLOR_RESET\]]""\n\\$ "
+        export PS1="$COLOR_BLUE\D{%d/%b/%Y %T} $PYTHON_VIRTUALENV\n$COLOR_CYAN\u$COLOR_RESET@$COLOR_PURPLE\h$COLOR_RESET [$COLOR_BOLD_BLUE\w$COLOR_RESET]""\n\\$ "
 
     else
         # No Git and no color, fancy prompt
@@ -257,4 +266,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# User specific aliases and functions
+
+
