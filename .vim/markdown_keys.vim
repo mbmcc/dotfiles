@@ -10,8 +10,8 @@ nnoremap <Leader>[ ?^#<CR>:let @/=""<CR>
 nnoremap <Leader>_ mb^i_<Esc>A_<Esc>`b
 nnoremap <Leader>9 mb^i_<Esc>A_<Esc>`b
 " Create Bold line 
-nnoremap <Leader>* mb^i__<Esc>A__<Esc>`b
-nnoremap <Leader>8 mb^i__<Esc>A__<Esc>`b
+nnoremap <Leader>* mb^i**<Esc>A**<Esc>`b
+nnoremap <Leader>8 mb^i**<Esc>A**<Esc>`b
 " Remove Formatting
 nnoremap <Leader>- mb^x$x`b
 " change text to stikethrough
@@ -21,9 +21,9 @@ nnoremap <Leader>~ mb^i~~<Esc>A~~<Esc>`b
 
 
 " "Create checkbox (copy to Register c for macro use)
-nnoremap <Leader>c mx^i+ [ ] <Esc>`x6l
+nnoremap <Leader>c mx^i- [ ] <Esc>`x6l
 " "Remove checkbox
-nnoremap <Leader>C mx0f+6x<Esc>`x6h
+nnoremap <Leader>C mx0f-6x<Esc>`x6h
 " "Fill the checkbox with an x
 nnoremap <Leader>x mx0f[lrx<Esc>`x
 " "Clear the checkbox 
@@ -38,7 +38,7 @@ nnoremap <Leader>Q mx02x<Esc>`x
 
 
 " Create unordered bullet
-nnoremap <Leader>b mb^i+<Space><Esc>`b
+nnoremap <Leader>b mb^i-<Space><Esc>`b
 " Remove unordered bullet
 nnoremap <Leader>B mb02x<Esc>`b
 " Create indented unordered list

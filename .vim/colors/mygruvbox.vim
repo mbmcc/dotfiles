@@ -891,6 +891,41 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " }}}
 
 " Filetype specific -----------------------------------------------------------
+" AsciiDoc: {{{
+
+call s:HL('asciidocItalic', s:fg3, s:none, s:italic)
+
+hi! link asciidocH1 GruvboxOrangeBold
+hi! link asciidocH2 GruvboxYellowBold
+hi! link asciidocH3 GruvboxGreenBold
+hi! link asciidocH4 GruvboxAquaBold
+hi! link asciidocH5 GruvboxBlueBold
+hi! link asciidocH6 GruvboxPurpleBold
+
+hi! link asciidocCode GruvboxAqua
+hi! link asciidocCodeBlock GruvboxAqua
+hi! link asciidocCodeDelimiter GruvboxAqua
+
+hi! link asciidocBlockquote GruvboxGray
+hi! link asciidocListMarker GruvboxGray
+hi! link asciidocOrderedListMarker GruvboxGray
+hi! link asciidocRule GruvboxGray
+hi! link asciidocHeadingRule GruvboxGray
+
+hi! link asciidocUrlDelimiter GruvboxFg3
+hi! link asciidocLinkDelimiter GruvboxFg3
+hi! link asciidocLinkTextDelimiter GruvboxFg3
+
+hi! link asciidocHeadingDelimiter GruvboxOrange
+hi! link asciidocUrl GruvboxPurple
+hi! link asciidocUrlTitleDelimiter GruvboxGreen
+
+call s:HL('asciidocLinkText', s:gray, s:none, s:underline)
+hi! link asciidocIdDeclaration asciidocLinkText
+
+hi SpellBad term=reverse cterm=undercurl gui=undercurl guisp=#83a598 ctermfg=167 guifg=#fb4934
+
+" }}}
 " Diff: {{{
 
 hi! link diffAdded GruvboxGreen

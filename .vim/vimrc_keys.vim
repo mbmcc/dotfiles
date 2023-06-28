@@ -2,13 +2,14 @@
 "change the Leader from the default \
 let mapleader = " " 
 
-"drop to the command shell, get the date and time
-nnoremap <Leader>d :r !date<Enter>
-nnoremap <Leader>dt :let @d=strftime("%A %0d %^b %Y")<CR>"dp
+"drop to the command shell, get the Time and Date 
+nnoremap <Leader>td :r !date<Enter>
 
 " Clear the search register
 nnoremap <Leader>/ :let @/ = ""<Enter>
-nnoremap <Leader>y "+Y
+" Copy and paste to the system Window Manager clipboard
+nnoremap <Leader>y "+y
+xnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 
 nnoremap <Leader>bp :bp<CR>
@@ -29,6 +30,13 @@ nnoremap <Leader>O :norm O<cr>
    :map ]] j0[[%/{<CR>
    :map [] k$][%?}<CR>
 
+" shortcuts for escaping insert mode that don't require using my left pinky
+" finger
+
+inoremap jk <Esc>
+inoremap kj <Esc>
+vnoremap jk <Esc>
+vnoremap kj <Esc>
 
 ""---------- Markdown shortcuts ----------
 "

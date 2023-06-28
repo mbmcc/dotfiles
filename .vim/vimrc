@@ -29,6 +29,9 @@ set wildmenu
 "path looks in folder, subfolder, and subfolders of subfolders
 set path+=**
 
+" Enable mouse in all vim modes :help mouse
+set mouse=a
+
 "----- Temp files and Spelling -----"
 set backupdir=$HOME/.vim/tmp//
 set directory=$HOME/.vim/tmp//
@@ -41,7 +44,8 @@ set spellfile=$HOME/.vim/spell/nasatechspeak.utf-8.add
 "----- Personal Themes and Colors -----"
 set background=dark 
 colorscheme mygruvbox 
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark='hard'
+hi Normal guibg=NONE ctermbg=NONE
 " for setting the bad spelled word to red underline
 " hi SpellBad term=reverse cterm=undercurl gui=undercurl guisp=#83a598 ctermfg=167 guifg=#fb4934
 
@@ -55,11 +59,29 @@ source $HOME/.vim/vimrc_statusbar.vim
 source $HOME/.vim/vimrc_keys.vim
 
 
-" ----- Markdown specific settings -----"  
-let g:markdown_folding = 1
-let g:markdown_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
+" ----- Filetype specific settings -----"  
+" Markdown
+function! SetMarkdownSettings()
+    let g:markdown_folding = 1
+    let g:markdown_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
+    source ~/.vim/markdown_keys.vim
+    set foldcolumn=2
+    set foldlevelstart=1
+    set foldlevel=2
+endfunction
+au BufRead,BufNewFile *.md,*.markdown,*.txt call SetMarkdownSettings()
 
-au BufRead,BufNewFile *.md,*.markdown,*.txt source ~/.vim/markdown_keys.vim
+" AsciDoc 
+function! SetAsciidocSettings()
+    let g:asciidoc_folding = 1
+    let g:asciidoc_fenced_languages = [ 'sh', 'dosini', 'dosbatch', 'cpp', 'vim', 'yaml', 'python', 'bash=sh', 'sql', 'git', 'make', 'html', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml']
+    source ~/.vim/asciidoc_keys.vim
+    source ~/.vim/ftplugin/asciidoc.vim
+    set foldcolumn=2
+    set foldlevelstart=1
+    set foldlevel=2
+endfunction
+au BufRead,BufNewFile *.adoc,*.asciidoc call SetAsciidocSettings()
 
 " CSV settings
 au BufRead,BufNewFile *.csv,*.tsv,*.tab set tabstop=15
@@ -68,7 +90,11 @@ au BufRead,BufNewFile *.csv,*.tsv,*.tab set tabstop=15
 
 source /$HOME/.vim/vimrc_netrw.vim
 "------------------------------"
-"----- Custom Functions -----"
+"----- Custom Functions and commands -----"
+"
+"Close the current buffer or window with one less keystroke
+"User defined commands must start with an uppercase letter
+command! -nargs=0 C :bdelete
 
 " TAB Completion
 " "from :h ins-completion
@@ -83,15 +109,30 @@ endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
 
+" Cycle through installed colors
+" https://www.reddit.com/r/vim/comments/w4iv6b/comment/ih2u4q5
+" :exe "colors" NextColor()
+"
+let g:colors = getcompletion('', 'color')
+func! NextColors()
+    let idx = index(g:colors, g:colors_name)
+    return (idx + 1 >= len(g:colors) ? g:colors[0] : g:colors[idx + 1])
+endfunc
+func! PrevColors()
+    let idx = index(g:colors, g:colors_name)
+    return (idx - 1 < 0 ? g:colors[-1] : g:colors[idx - 1])
+endfunc
+
+
 "------------------------------"
 "----- Plugin Manager -----"
-call plug#begin('~/.vim/pack/plugged')
+call plug#begin('~/.vim/pack/plug')
 " The default plugin directory will be as follows:
-" "   - Vim (Linux/macOS): '~/.vim/plugged'
+" "   - Vim (Linux/macOS): '~/.vim/pack/plug'
 " "   - Vim (Windows): '~/vimfiles/plugged'
 " "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
 " " You can specify a custom plugin directory by passing it as the argument
-" "   - e.g. `call plug#begin('~/.vim/plugged')`
+" "   - e.g. `call plug#begin('~/.vim/pack/plug')`
 " "   - Avoid using standard Vim directory names like 'plugin'
 "
 " " Make sure you use single quotes
@@ -110,6 +151,11 @@ Plug 'dhruvasagar/vim-table-mode'
 " add such surroundings in pairs.
 Plug 'tpope/vim-surround'
 
+" A git plugin so good it should be illegal
+Plug 'tpope/vim-fugitive'
+
+" A git plugin that allows you to seamlessly see the git diff
+Plug 'airblade/vim-gitgutter'
 
 " Easy and light csv manipulation
 " https://github.com/mechatroner/rainbow_csv
@@ -119,6 +165,16 @@ Plug 'mechatroner/rainbow_csv'
 " https://github.com/sillybun/vim-repl
 Plug 'sillybun/vim-repl'
 
+" Add Ansible file syntax to VIM
+Plug 'pearofducks/ansible-vim'
+
+" Add improved ASCIIDoc support
+"Plug 'habamax/vim-asciidoctor'
+"Plug 'matcatc/vim-asciidoc-folding'
+
+" vim-markdown / requires tabluar
+"Plug 'godlygeek/tabular' 
+"Plug 'preservim/vim-markdown'
 """"" Themes
 " Gruvbox (Good Markdown)
 Plug 'morhetz/gruvbox'
@@ -140,10 +196,10 @@ call plug#end()
 " ----- Now load custom settings based on plugins ----- "
 "
 
-colorscheme PaperColor
-let g:PaperColor_Theme_Options = { 'theme' : {   'default': { 	'transparent_background': 1    }   }  }
-colorscheme PaperColor
-
+"colorscheme PaperColor
+"let g:PaperColor_Theme_Options = { 'theme' : {   'default': { 	'transparent_background': 1    }   }  }
+"colorscheme PaperColor
+"
 "colorscheme solarized "https://github.com/altercation/vim-colors-solarized
 "colorscheme gruvbox "https://github.com/morhetz/gruvbox
 
@@ -156,5 +212,8 @@ let g:table_mode_header_fillchar='='
 
 " vim-repl keybindings and customizations
 nnoremap <leader>r :REPLToggle<CR>
+
+" Load the last saved session
+" source ~/.vim/lastsession.vim 
 
 
