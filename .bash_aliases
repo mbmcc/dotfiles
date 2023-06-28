@@ -44,8 +44,9 @@ fi
 # ssh sessions
 
 alias ironhide='ssh -v -M ironhide'
-alias bastion='ssh -vv -M ironhide'
-alias jumparc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:soc-p-jump-ar01.soc.nasa.gov /w:1440 /h:1200'
+alias bastion='ssh -vv -M bastion'
+#alias jumparc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:soc-p-jump-ar01.soc.nasa.gov /w:1440 /h:1200'
+alias jumparc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:localhost:13389 /w:1440 /h:1200'
 alias jumpa='jumparc'
 alias jumpjsc='xfreerdp +clipboard /dynamic-resolution /audio-mode:1 +fonts +home-drive /bpp:8 /u:mmccourr /v:soc-p-jump-js01.soc.nasa.gov /w:1440 /h:1200'
 alias jumpj='jumpjsc'
