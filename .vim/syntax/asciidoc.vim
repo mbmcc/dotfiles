@@ -20,10 +20,30 @@
 " - Lines within a paragraph beginning with a period are highlighted as
 "   block titles.
 
+" This version has additions from Tim Popes Markdown Syntax vim script.
+" Added / Edited by Matthew McCourry
+" github.com/mbmcc
+" Each Header level now has its own highlighting (ATX syntax only. Se
+" style headers cause issues with other block elements
 
 if exists("b:current_syntax")
   finish
 endif
+
+" Imported from Tim Popes Markdown syntax, for heading level highlights
+"
+syn match asciidocH1 "^.\+\n=\+$" contained contains=@asciidocHeadingRule
+syn match asciidocH2 "^.\+\n-\+$" contained contains=@asciidocHeadingRule
+
+syn match asciidocHeadingRule "^[=-]\+$" contained
+
+syn region asciidocH1 matchgroup=asciidocH1Delimiter start="==\@!"      end="=*\s*$" keepend oneline 
+syn region asciidocH2 matchgroup=asciidocH2Delimiter start="===\@!"     end="=*\s*$" keepend oneline 
+syn region asciidocH3 matchgroup=asciidocH3Delimiter start="====\@!"    end="=*\s*$" keepend oneline 
+syn region asciidocH4 matchgroup=asciidocH4Delimiter start="=====\@!"   end="=*\s*$" keepend oneline 
+syn region asciidocH5 matchgroup=asciidocH5Delimiter start="======\@!"  end="=*\s*$" keepend oneline 
+syn region asciidocH6 matchgroup=asciidocH6Delimiter start="=======\@!" end="=*\s*$" keepend oneline 
+
 
 " Use the default syntax syncing.
 
@@ -72,7 +92,7 @@ syn match asciidocAdmonition /^\u\{3,15}:\(\s\+.*\)\@=/
 syn region asciidocTable_OLD start=/^\([`.']\d*[-~_]*\)\+[-~_]\+\d*$/ end=/^$/
 syn match asciidocBlockTitle /^\.[^. \t].*[^-~_]$/ contains=asciidocQuoted.*,asciidocAttributeRef
 syn match asciidocTitleUnderline /[-=~^+]\{2,}$/ transparent contained contains=NONE
-syn match asciidocOneLineTitle /^=\{1,5}\s\+\S.*$/ contains=asciidocQuoted.*,asciidocMacroAttributes,asciidocAttributeRef,asciidocEntityRef,asciidocEmail,asciidocURL,asciidocBackslash
+"syn match asciidocOneLineTitle /^=\{1,5}\s\+\S.*$/ contains=asciidocQuoted.*,asciidocMacroAttributes,asciidocAttributeRef,asciidocEntityRef,asciidocEmail,asciidocURL,asciidocBackslash
 syn match asciidocTwoLineTitle /^[^. +/].*[^.]\n[-=~^+]\{3,}$/ contains=asciidocQuoted.*,asciidocMacroAttributes,asciidocAttributeRef,asciidocEntityRef,asciidocEmail,asciidocURL,asciidocBackslash,asciidocTitleUnderline
 
 syn match asciidocAttributeList /^\[[^[ \t].*\]$/
@@ -118,6 +138,20 @@ syn region asciidocHLabel start=/^\s*/ end=/\(::\|;;\)\(\s\+\|\\$\)/ oneline con
 " Starts with any of the above.
 syn region asciidocList start=/^\s*\(-\|\*\{1,5}\)\s/ start=/^\s*\(\(\d\+\.\)\|\.\{1,5}\|\(\a\.\)\|\([ivxIVX]\+)\)\)\s\+/ start=/.\+\(:\{2,4}\|;;\)$/ end=/\(^[=*]\{4,}$\)\@=/ end=/\(^\(+\|--\)\?\s*$\)\@=/ contains=asciidocList.\+,asciidocQuoted.*,asciidocMacroAttributes,asciidocAttributeRef,asciidocEntityRef,asciidocEmail,asciidocURL,asciidocBackslash,asciidocCommentLine,asciidocAttributeList,asciidocToDo
 
+hi def link asciidocH1                    htmlH1
+hi def link asciidocH2                    htmlH2
+hi def link asciidocH3                    htmlH3
+hi def link asciidocH4                    htmlH4
+hi def link asciidocH5                    htmlH5
+hi def link asciidocH6                    htmlH6
+hi def link asciidocHeadingRule           asciidocRule
+hi def link asciidocH1Delimiter           asciidocHeadingDelimiter
+hi def link asciidocH2Delimiter           asciidocHeadingDelimiter
+hi def link asciidocH3Delimiter           asciidocHeadingDelimiter
+hi def link asciidocH4Delimiter           asciidocHeadingDelimiter
+hi def link asciidocH5Delimiter           asciidocHeadingDelimiter
+hi def link asciidocH6Delimiter           asciidocHeadingDelimiter
+hi def link asciidocHeadingDelimiter      Delimiter
 hi def link asciidocAdmonition Special
 hi def link asciidocAnchorMacro Macro
 hi def link asciidocAttributeEntry Special
