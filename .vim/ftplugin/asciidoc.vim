@@ -1,5 +1,11 @@
 " Vim filetype plugin
 " Language:		Asciidoc
+" based on Tim Popes Markdown plugin
+" Edited by Matthew McCourry 
+" github.com/mbmcc
+"
+" SEtext style headers cause folding issues on other block elements. Setext
+" header recognition removed
 
 if exists("b:did_ftplugin")
   finish
@@ -25,14 +31,6 @@ function! s:HashIndent(lnum)
   if len(hash_header) > 0
     " hashtag header
     return hash_header
-  else
-    " == or -- header
-    let nextline = getline(a:lnum + 1)
-    if nextline =~ '^=\+\s*$'
-      return repeat('=', 1)
-    elseif nextline =~ '^-\+\s*$'
-      return repeat('=', 2)
-    endif
   endif
 endfunction
 
@@ -44,16 +42,16 @@ function! AsciidocFold()
     return ">" . match(line, ' ')
   endif
 
-  " Setext style headings
-  let nextline = getline(v:lnum + 1)
-  if (line =~ '^.\+$') && (nextline =~ '^=\+$')
-    return ">1"
-  endif
-
-  if (line =~ '^.\+$') && (nextline =~ '^-\+$')
-    return ">2"
-  endif
-
+"  " Setext style headings
+"  let nextline = getline(v:lnum + 1)
+"  if (line =~ '^.\+$') && (nextline =~ '^=\+$')
+"    return ">1"
+"  endif
+"
+"  if (line =~ '^.\+$') && (nextline =~ '^-\+$')
+"    return ">2"
+"  endif
+"
   return "="
 endfunction
 
